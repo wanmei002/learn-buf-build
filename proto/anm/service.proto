@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package farm.v1;
+import "pet.proto";
+
+option go_package = "gt/golang;pb";
+
+service FarmService {
+  rpc AskPrice(Pig)returns(RetPrice);
+}

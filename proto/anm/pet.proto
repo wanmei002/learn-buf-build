@@ -1,0 +1,16 @@
+syntax = "proto3";
+import "google/type/datetime.proto";
+
+option go_package = "gt/golang;pb";
+
+message Pig {
+  string category = 1;
+  string weight = 2;
+  google.type.DateTime birthday = 3;
+}
+
+
+message RetPrice {
+  string total_price = 1;
+  string unit_price = 2;
+}
