@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package gw.v1;
+
+option go_package = "gt/pb;pb";
+
+import "google/api/annotations.proto";
+
+
+message Dial {
+  string hostname = 1;
+  string port = 2;
+  string name = 3;
+}
+
+message Ask {
+  int32 code = 1;
+  string msg = 2;
+  AskContext data = 3;
+}
+
+message AskContext {
+  string hostname = 1;
+  string port = 2;
+  string name = 3;
+  bool can_call = 4;
+}
+
+service PhoneService {
+  rpc DialRequest(Dial) returns (Ask) {
+      option (google.api.http)= {
+        post: "/v1/dial_request",
+        body: "*"
+      };
+  }
+}
